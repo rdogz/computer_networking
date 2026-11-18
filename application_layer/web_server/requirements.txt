@@ -1,0 +1,6 @@
+1. Create a connection socket when contacted by a client
+2. recieve the HTTP request from this connection
+3. parse the reqeust to determine the specific file being requested
+4. get the requested file from the server's file system
+5. create an HTTP response message consisting of the requested file preceded by header lines
+6. send the response over the TCP connection to the requesting browser (404 if file not found)
