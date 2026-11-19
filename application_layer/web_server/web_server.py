@@ -14,7 +14,7 @@ serverSocket.listen(1)
 
 while True:
     # Establish the connection
-    print("Ready to serve...")
+    print(f"Ready to serve on http://127.0.0.1:{PORT}/index.html")
     connectionSocket, addr = serverSocket.accept()
     try:
         message = connectionSocket.recv(1024)
