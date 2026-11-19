@@ -25,11 +25,12 @@ while True:
         # Send one HTTP header line into socket
         connectionSocket.send(
             b"HTTP/1.1 200 OK\r\n"
-        )  # \r\n is an additional empty line meaning end of header
+        )  # \r\n is an additional empty line
+        connectionSocket.sendall(b"HTTP/1.1 200 OK\r\n")
+        connectionSocket.send(b"Content-Type: text/html\r\n")
+        connectionSocket.sendall(b"\r\n")
         # Send the content of the requested file to the client
-        for i in range(0, len(outputdata)):
-            connectionSocket.send(outputdata[i].encode())
-            connectionSocket.send("\r\n".encode())
+        connectionSocket.sendall(outputdata.encode())
         connectionSocket.close()
     except IOError:
         connectionSocket.send("HTTP/1.1 404 Not Found".encode())
